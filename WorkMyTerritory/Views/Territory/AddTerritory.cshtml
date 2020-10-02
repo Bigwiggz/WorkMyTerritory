@@ -1,0 +1,48 @@
+﻿
+@model WorkMyTerritory.ViewModels.TerritoryViewModel
+@using WorkMyTerritory.Models.Enums
+
+
+<h1>Add your Congregation</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TerritoryNumber"></label>
+                <input asp-for="TerritoryNumber" class="form-control" />
+                <span asp-validation-for="TerritoryNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerritorySpecialNotes"></label>
+                <input asp-for="TerritorySpecialNotes" class="form-control" />
+                <span asp-validation-for="TerritorySpecialNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerritoryHiddenNotes"></label>
+                <input asp-for="TerritoryHiddenNotes" class="form-control" />
+                <span asp-validation-for="TerritoryHiddenNotes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerritoryBoundariesText"></label>
+                <input asp-for="TerritoryBoundariesText" class="form-control" />
+                <span asp-validation-for="TerritoryBoundariesText" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerritorySpclTypes"></label>
+                <select asp-for="TerritorySpclTypes" class="form-control" asp-items="Html.GetEnumSelectList<EnumTerritoryType>()">
+                    <option value="">Please select Sex</option>
+                </select>
+                <span asp-validation-for="TerritorySpclTypes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TerritoryActive"></label>
+                <select asp-for="TerritoryActive" class="form-control" asp-items="Html.GetEnumSelectList<EnumRecordStatus>()">
+                    <option value="">Privilege of Service</option>
+                </select>
+                <span asp-validation-for="TerritoryActive" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Campaign</button>
+        </form>
+    </div>
+</div>

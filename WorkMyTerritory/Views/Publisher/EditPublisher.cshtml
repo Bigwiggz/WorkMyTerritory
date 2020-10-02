@@ -1,0 +1,42 @@
+﻿@model WorkMyTerritory.ViewModels.PublisherViewModel
+@using WorkMyTerritory.Models.Enums
+
+<h1>Add a Publisher</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input hidden asp-for="Id" class="form-control" />
+            <div class="form-group">
+                <label asp-for="PublisherFirstName"></label>
+                <input asp-for="PublisherFirstName" class="form-control" />
+                <span asp-validation-for="PublisherFirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PublisherLastName"></label>
+                <input asp-for="PublisherLastName" class="form-control" />
+                <span asp-validation-for="PublisherLastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnumPublisherSex"></label>
+                <select asp-for="EnumPublisherSex" class="form-control" asp-items="Html.GetEnumSelectList<EnumPublisherSex>()">
+                    <option value="">Please select Sex</option>
+                </select>
+                <span asp-validation-for="EnumPublisherSex" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EnumPublisherPrivileges"></label>
+                <select asp-for="EnumPublisherPrivileges" class="form-control" asp-items="Html.GetEnumSelectList<EnumPublisherPrivileges>()">
+                    <option value="">Privilege of Service</option>
+                </select>
+                <span asp-validation-for="EnumPublisherPrivileges" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Edit Publisher</button>
+        </form>
+    </div>
+</div>

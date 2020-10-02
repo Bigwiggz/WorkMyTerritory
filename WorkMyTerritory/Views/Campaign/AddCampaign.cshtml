@@ -1,0 +1,34 @@
+﻿
+@model WorkMyTerritory.ViewModels.CampaignAddSpecialEventsViewModel
+
+
+
+<h1>Add your Congregation</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="SpecialCampaignName"></label>
+                <input asp-for="SpecialCampaignName" class="form-control" />
+                <span asp-validation-for="SpecialCampaignName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialCampaignStartDate"></label>
+                <input type="date" asp-for="SpecialCampaignStartDate" class="form-control" />
+                <span asp-validation-for="SpecialCampaignStartDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialCampaignEndDate"></label>
+                <input type="date" asp-for="SpecialCampaignEndDate" class="form-control" />
+                <span asp-validation-for="SpecialCampaignEndDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SpecialCampaignDescription"></label>
+                <input asp-for="SpecialCampaignDescription" class="form-control" />
+                <span asp-validation-for="SpecialCampaignDescription" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Campaign</button>
+        </form>
+    </div>
+</div>

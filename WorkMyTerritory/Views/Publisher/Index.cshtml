@@ -1,0 +1,46 @@
+﻿@model IEnumerable<WorkMyTerritory.ViewModels.PublisherViewModel>
+
+
+<h1>List of Publishers</h1>
+<html>
+<head>
+    <title>Active Publishers List</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Publisher Name</th>
+                <th>Email</th>
+                <th>Sex</th>
+                <th>Privilege</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var Publisher in Model)
+            {
+                <tr>
+                    <td>
+                        @Publisher.PublisherFirstName @Publisher.PublisherLastName
+                    </td>
+                    <td>
+                        @Publisher.Email
+                    </td>
+                    <td>
+                        @Publisher.EnumPublisherSex
+                    </td>
+                    <td>
+                        @Publisher.EnumPublisherPrivileges
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Publisher" asp-action="EditPublisher" asp-route-id="@Publisher.Id">Edit</a> |
+                        <a class="btn btn-danger" asp-controller="Publisher" asp-action="Delete" asp-route-id="@Publisher.Id">Delete</a> 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <h5>Click Here to Add a Publisher</h5>
+    <a class="btn btn-success" asp-controller="Publisher" asp-action="AddPublisher">Add Publisher</a>
+</body>
+</html>

@@ -1,0 +1,51 @@
+﻿@model IEnumerable<WorkMyTerritory.ViewModels.CampaignSpecialEventsViewModel>
+
+
+<h1>List of Campaign Events</h1>
+<div>
+<div>
+    <h1>Campaign Events</h1>
+</div>
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Campaign Event ID</th>
+                <th>Campaign Event Name</th>
+                <th>Campaign Event Start Date</th>
+                <th>Campaign Event End Date</th>
+                <th>Campaign Event Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var CampaignEvent in Model)
+            {
+                <tr>
+                    <td>
+                        @CampaignEvent.SpecialCampaignId
+                    </td>
+                    <td>
+                        @CampaignEvent.SpecialCampaignName
+                    </td>
+                    <td>
+                        @CampaignEvent.SpecialCampaignStartDate
+                    </td>
+                    <td>
+                        @CampaignEvent.SpecialCampaignEndDate
+                    </td>
+                    <td>
+                        @CampaignEvent.SpecialCampaignDescription
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-controller="Campaign" asp-action="EditCampaign" asp-route-id="@CampaignEvent.SpecialCampaignId">Edit</a> |
+                        <form asp-action="DeleteCampaign" asp-route-id="@CampaignEvent.SpecialCampaignId" method="post">
+                        <button onclick="return confirm('Are you sure you want to delete this campaign: @CampaignEvent.SpecialCampaignName')" class="btn btn-primary">Delete</button>
+                        </form>
+                        | <a class="btn btn-success" asp-controller="Campaign" asp-action="AddCampaign" asp-route-id="@CampaignEvent.FKCongregationId">Add Campaign</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+</div>

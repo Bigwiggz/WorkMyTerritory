@@ -1,0 +1,83 @@
+﻿@model WorkMyTerritory.ViewModels.CongregationPortalViewModel
+
+    <h1>Hello @Model.PublisherFirstName @Model.PublisherLastName</h1>
+    <h2>Congregation: @Model.CongregationName</h2>
+    <div class="row">
+        <div class="col-sm-4 pb-4">
+            <div class="card">
+                <h5 class="card-header bg-light">Congregation</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Congregation Information</h5>
+                    <p class="card-text">Edit your Congregation Information Here</p>
+                    <a class="btn btn-primary" asp-controller="Congregation" asp-action="EditCongregation" asp-route-id="@Model.CongregationId">Edit</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 pb-4">
+            <div class="card">
+                <h5 class="card-header bg-light">Territories</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Congregation Territories</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="AddTerritory" class="btn btn-primary" asp-controller="Territory">Add</a> |
+                    <a asp-action="EditTerritory" class="btn btn-primary" asp-controller="Territory">Details</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 pb-4">
+            <div class="card">
+                <h5 class="card-header bg-light">Publishers</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Add/Edit Publisher Information</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="Index" class="btn btn-primary" asp-controller="Publisher" asp-route-id="@Model.CongregationId">Edit</a>|
+                    <a asp-action="Add" class="btn btn-primary" asp-controller="Publisher" asp-route-id="AddPublisher">Add</a>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 pb-4">
+            <div class="card">
+                <h5 class="card-header bg-light">Service Groups</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Congregation Service Groups</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="Index" class="btn btn-primary" asp-controller="ServiceGroup" asp-route-id="@Model.CongregationId">Edit</a> |
+                    <a asp-action="AddServiceGroup" class="btn btn-primary" asp-controller="ServiceGroup" asp-route-id="@Model.CongregationId">Add</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 pb-4">
+            <div class="card">
+                <h5 class="card-header bg-light">Publishers to Service Groups</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Assign Publishers to Service Groups</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="Index" class="btn btn-primary" asp-controller="PublisherServiceGroup" asp-route-id="@Model.CongregationId">Edit</a>|
+                    <a asp-action="AddCampaign" class="btn btn-primary" asp-controller="PublisherServiceGroup" asp-route-id="@Model.CongregationId">Add</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 pb-4">
+            <div class="card bg-light">
+                <h5 class="card-header bg-light">Service Group Roles</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Assign Service Group Territory Assigners</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="Index" class="btn btn-primary" asp-controller="UserRoles" asp-route-id="@Model.CongregationId">Edit</a>|
+                    <a asp-action="AddCampaign" class="btn btn-primary" asp-controller="UserRoles" asp-route-id="@Model.CongregationId">Add</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-4 pb-4">
+            <div class="card">
+                <h5 class="card-header bg-light">Campaigns</h5>
+                <div class="card-body">
+                    <h5 class="card-title">Congregation Campaigns</h5>
+                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                    <a asp-action="Index" class="btn btn-primary" asp-controller="Campaign" asp-route-id="@Model.CongregationId">Edit</a>|
+                    <a asp-action="AddCampaign" class="btn btn-primary" asp-controller="Campaign" asp-route-id="@Model.CongregationId">Add</a>
+                </div>
+            </div>
+        </div>
+    </div>

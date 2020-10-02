@@ -1,0 +1,62 @@
+﻿
+@model WorkMyTerritory.ViewModels.CongregationViewModel
+
+<h1>Add your Congregation</h1>
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CongregationName"></label>
+                <input asp-for="CongregationName" class="form-control" />
+                <span asp-validation-for="CongregationName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationStreetAddress"></label>
+                <input asp-for="CongregationStreetAddress" class="form-control" />
+                <span asp-validation-for="CongregationStreetAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationCity"></label>
+                <input asp-for="CongregationCity" class="form-control" />
+                <span asp-validation-for="CongregationCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationState"></label>
+                <input asp-for="CongregationState" class="form-control" />
+                <span asp-validation-for="CongregationState" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationZIPCode"></label>
+                <input asp-for="CongregationZIPCode" class="form-control" />
+                <span asp-validation-for="CongregationZIPCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationLanguage"></label>
+                <input asp-for="CongregationLanguage" class="form-control" />
+                <span asp-validation-for="CongregationLanguage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationLatitude"></label>
+                <input asp-for="CongregationLatitude" class="form-control" />
+                <span asp-validation-for="CongregationLatitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationLongitude"></label>
+                <input asp-for="CongregationLongitude" class="form-control" />
+                <span asp-validation-for="CongregationLongitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationNumber"></label>
+                <input asp-for="CongregationNumber" class="form-control" />
+                <span asp-validation-for="CongregationNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CongregationActive"></label>
+                <input asp-for="CongregationActive" class="form-control" />
+                <span asp-validation-for="CongregationActive" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>

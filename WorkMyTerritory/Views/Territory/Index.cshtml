@@ -1,0 +1,43 @@
+﻿@model IEnumerable<WorkMyTerritory.ViewModels.TerritoryViewModel>
+
+
+    <h1>List of Territories</h1>
+    <div>
+    <div>
+        <h1>Terrtiories</h1>
+    </div>
+    <div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Territory Number</th>
+                    <th>NumberofSpanish</th>
+                    <th>Territory Type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Territory in Model)
+                {
+                    <tr>
+                        <td>
+                            @Territory.TerritoryNumber
+                        </td>
+                        <td>
+                            @Territory.NumberofSpanish
+                        </td>
+                        <td>
+                            @Territory.TerritorySpclTypes
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Territory" asp-action="EditTerritory" asp-route-id="@Territory.CongregationTerritoriesId">Edit</a> |
+                            <form asp-action="Territory" asp-route-id="@Territory.CongregationTerritoriesId" method="post">
+                            <button onclick="return confirm('Are you sure you want to delete this campaign: @Territory.TerritoryNumber')" class="btn btn-primary">Delete</button>
+                            </form>
+                            | <a class="btn btn-success" asp-controller="Territory" asp-action="AddTerritory" asp-route-id="@Territory.FKtblCongregationId">Add Campaign</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    </div>

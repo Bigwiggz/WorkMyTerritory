@@ -1,0 +1,22 @@
+﻿@model WorkMyTerritory.ViewModels.PublisherServiceGroupViewModel
+
+
+<h1>Assign Publishers to Service Groups</h1>
+<html>
+<head>
+    <title>Assign Publishers to Service Groups</title>
+</head>
+<body>
+    <h2>Please select group first</h2>
+    <form asp-controller="PublisherServiceGroup" asp-action="Index" method="post">
+        <select asp-for="ServiceGroupsId" asp-items="@(new SelectList(Model.ServiceGroups,"ServiceGroupsId","ServiceGroupName"))">
+            <option>Please select one</option>
+        </select>
+        <h2>Select all publishers</h2>
+        <select asp-for="Id" asp-items="@(new MultiSelectList(Model.ApplicationUser,"Id","PublisherFirstName"))" multiple>
+            <option>Please select all that apply</option>
+        </select>
+        <button type="submit" class="btn btn-primary">Add to Group</button>
+    </form>
+</body>
+</html>

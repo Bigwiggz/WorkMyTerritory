@@ -1,0 +1,43 @@
+﻿
+@model IEnumerable<WorkMyTerritory.ViewModels.ServiceGroupViewModel>
+
+@{
+}
+
+<h1>List of Service Groups</h1>
+<html>
+<head>
+    <title>Service Groups</title>
+</head>
+<body>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Service Group ID</th>
+                <th>Service Group Name</th>
+                <th>Service Group Notes</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var ServiceGroup in Model)
+            {
+            <tr>
+                <td>
+                    @ServiceGroup.ServiceGroupsId
+                </td>
+                <td>
+                    @ServiceGroup.ServiceGroupName
+                </td>
+                <td>
+                    @ServiceGroup.ServiceGroupNotes
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-controller="ServiceGroup" asp-action="Edit" asp-route-id="@ServiceGroup.ServiceGroupsId">Edit</a> |
+                    <a class="btn btn-danger" asp-controller="ServiceGroup" asp-action="Delete" asp-route-id="@ServiceGroup.ServiceGroupsId">Delete</a>
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>
