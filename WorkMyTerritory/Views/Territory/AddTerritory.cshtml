@@ -1,9 +1,18 @@
 ﻿
 @model WorkMyTerritory.ViewModels.TerritoryViewModel
 @using WorkMyTerritory.Models.Enums
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 
 
 <h1>Add your Congregation</h1>
+<div id="map"></div>
+<div id="panel">
+    <div id="color-palette"></div>
+    <div>
+        <button id="delete-button">Delete Selected Shape</button>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
         <form method="post">
@@ -45,4 +54,8 @@
             <button type="submit" class="btn btn-primary">Add Campaign</button>
         </form>
     </div>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+    <script type="text/javascript" src="https://maps.google.com/maps/api/js?libraries=drawing&key=@Json.Serialize(Configuration.GetSection("GoogleAPI").GetSection("GoogleMapsAPIKey").Value)"></script>
+    <script src="~/js/googleMapsAPI.js"></script>
+    <link href="~/css/style.css" rel="stylesheet" />
 </div>
