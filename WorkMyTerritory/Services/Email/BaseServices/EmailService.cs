@@ -6,18 +6,18 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WorkMyTerritory.Models;
-using WorkMyTerritory.Models.ModelInterfaces;
+using WorkMyTerritory.Services.Email.BaseInterfaces;
+using WorkMyTerritory.Services.Email.BaseModels;
 
-namespace WorkMyTerritory.Services
+namespace WorkMyTerritory.Services.Email.BaseServices
 {
-    public class EmailTerritoryService : IEmailTerritoryService
+    public class EmailService : IEmailService
     {
         private readonly IEmailConfiguration _emailConfiguration;
-        
-        public EmailTerritoryService(IEmailConfiguration emailConfiguration)
+
+        public EmailService(IEmailConfiguration emailConfiguration)
         {
-            _emailConfiguration = emailConfiguration;
+           _emailConfiguration = emailConfiguration;
         }
         public List<EmailMessage> ReceiveEmail(int maxCount = 10)
         {
@@ -38,8 +38,8 @@ namespace WorkMyTerritory.Services
 						Content = !string.IsNullOrEmpty(message.HtmlBody) ? message.HtmlBody : message.TextBody,
 						Subject = message.Subject
 					};
-					emailMessage.ToAddresses.AddRange(message.To.Select(x => (MailboxAddress)x).Select(x => new EmailTerritory { Email = x.Address, PublisherFullName = x.Name }));
-					emailMessage.FromAddresses.AddRange(message.From.Select(x => (MailboxAddress)x).Select(x => new EmailTerritory { Email = x.Address, PublisherFullName = x.Name }));
+					emailMessage.ToAddresses.AddRange(message.To.Select(x => (MailboxAddress)x).Select(x => new EmailAddress { Address = x.Address, Name = x.Name }));
+					emailMessage.FromAddresses.AddRange(message.From.Select(x => (MailboxAddress)x).Select(x => new EmailAddress { Address = x.Address, Name = x.Name }));
 					emails.Add(emailMessage);
 				}
 
@@ -50,8 +50,8 @@ namespace WorkMyTerritory.Services
         public void Send(EmailMessage emailMessage)
         {
 			var message = new MimeMessage();
-			message.To.AddRange(emailMessage.ToAddresses.Select(x => new MailboxAddress(x.PublisherFullName, x.Email)));
-			message.From.AddRange(emailMessage.FromAddresses.Select(x => new MailboxAddress(x.PublisherFullName, x.Email)));
+			message.To.AddRange(emailMessage.ToAddresses.Select(x => new MailboxAddress(x.FullName, x.Email)));
+			message.From.AddRange(emailMessage.FromAddresses.Select(x => new MailboxAddress(x.FullName, x.Email)));
 
 			message.Subject = emailMessage.Subject;
 			//We will say we are sending HTML. But there are options for plaintext etc. 

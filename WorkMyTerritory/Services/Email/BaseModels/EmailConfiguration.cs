@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using WorkMyTerritory.Services.Email.BaseInterfaces;
 
-namespace WorkMyTerritory.Services
+namespace WorkMyTerritory.Services.Email.BaseModels
 {
-    public interface IEmailConfiguration
+    public class EmailConfiguration: IEmailConfiguration
     {
 		public string SmtpServer { get; set; }
 		public int SmtpPort { get; set; }

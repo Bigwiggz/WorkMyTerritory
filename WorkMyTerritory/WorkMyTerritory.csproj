@@ -7,17 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <COMReference Include="Microsoft.Office.Excel.dll">
-      <Guid>00020813-0000-0000-c000-000000000046</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>9</VersionMinor>
-      <WrapperTool>tlbimp</WrapperTool>
-      <Lcid>0</Lcid>
-      <Isolated>false</Isolated>
-    </COMReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AutoMapper.Extensions.EnumMapping" Version="1.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
     <PackageReference Include="Bogus" Version="30.0.3" />
@@ -31,6 +20,10 @@
     <PackageReference Include="NETCore.MailKit" Version="2.0.3" />
     <PackageReference Include="NonFactors.Grid.Core.Mvc6" Version="6.2.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Extensions\Email\EmailModels\" />
   </ItemGroup>
 
 </Project>

@@ -11,6 +11,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
+using WorkMyTerritory.Extensions.Email.EmailInterfaces;
 using WorkMyTerritory.Models;
 using WorkMyTerritory.Models.ModelExtentions;
 using WorkMyTerritory.Models.ModelInterfaces;
@@ -23,12 +24,12 @@ namespace WorkMyTerritory.Controllers
     {
         private readonly MyManager userManager;
         private readonly SignInManager<ApplicationUser> signInManager;
-        private readonly IEmailTerritoryService emailSender;
+        private readonly IEmailSenderExtensions emailSender;
         private readonly ILogger<AccountController> logger;
 
         public AccountController(MyManager userManager,
             SignInManager<ApplicationUser> signInManager,
-            IEmailTerritoryService emailSender,
+            IEmailSenderExtensions emailSender,
             ILogger<AccountController> logger)
         {
             this.userManager = userManager;
@@ -70,7 +71,7 @@ namespace WorkMyTerritory.Controllers
                     //Create email confirmation token
                     var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId=user.Id,token=token}, Request.Scheme);
-                    //await IEmailTerritoryService.SendEmailConfirmationAsync(model.Email, confirmationLink);
+                    emailSender.SendEmailConfirmation(user, confirmationLink);
                     //log email sent
                     logger.Log(LogLevel.Warning, confirmationLink);
 

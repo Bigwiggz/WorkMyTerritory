@@ -14,11 +14,16 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using WorkMyTerritory.BusinessLayer.ValidationLogic;
+using WorkMyTerritory.Extensions.Email.EmailInterfaces;
+using WorkMyTerritory.Extensions.Email.EmailServices;
+using WorkMyTerritory.Extensions.EmailExtensionInterfaces;
 using WorkMyTerritory.Models;
 using WorkMyTerritory.Models.ModelExtentions;
 using WorkMyTerritory.Models.ModelInterfaces;
 using WorkMyTerritory.Models.ValidationLogic;
 using WorkMyTerritory.Services;
+using WorkMyTerritory.Services.Email.BaseInterfaces;
+using WorkMyTerritory.Services.Email.BaseModels;
 using WorkMyTerritory.ViewModels;
 
 namespace WorkMyTerritory
@@ -35,12 +40,14 @@ namespace WorkMyTerritory
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //Configure-Register Email Services
-            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
-            services.AddTransient<IEmailTerritoryService, EmailTerritoryService>();
+
             // General Configuration
             services.AddSingleton<IConfiguration>(Configuration);
-            
+
+            //Configure-Register Email Services
+            services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
+            services.AddTransient<IEmailSenderExtensions, EmailSenderExtensions>();
+
             //To add security and extend the UserManager Class
             services.AddTransient<IUserStore<ApplicationUser>, UserStore>();
             services.AddTransient<IRoleStore<ApplicationRole>, RoleStore>();

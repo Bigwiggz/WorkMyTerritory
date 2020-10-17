@@ -1,4 +1,5 @@
-﻿using Microsoft.Office.Interop.Excel;
+﻿/*
+using Microsoft.Office.Interop.Excel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -224,3 +225,4 @@ namespace WorkMyTerritory.Services.ExcelImportExport
         }
     }
 }
+*/
