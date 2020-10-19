@@ -8,6 +8,7 @@ using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -16,7 +17,6 @@ using Microsoft.Extensions.Hosting;
 using WorkMyTerritory.BusinessLayer.ValidationLogic;
 using WorkMyTerritory.Extensions.Email.EmailInterfaces;
 using WorkMyTerritory.Extensions.Email.EmailServices;
-using WorkMyTerritory.Extensions.EmailExtensionInterfaces;
 using WorkMyTerritory.Models;
 using WorkMyTerritory.Models.ModelExtentions;
 using WorkMyTerritory.Models.ModelInterfaces;
@@ -47,6 +47,13 @@ namespace WorkMyTerritory
             //Configure-Register Email Services
             services.AddSingleton<IEmailConfiguration>(Configuration.GetSection("EmailConfiguration").Get<EmailConfiguration>());
             services.AddTransient<IEmailSenderExtensions, EmailSenderExtensions>();
+
+            services.Configure<FormOptions>(o =>
+            {
+                o.ValueLengthLimit = int.MaxValue;
+                o.MultipartBodyLengthLimit = int.MaxValue;
+                o.MemoryBufferThreshold = int.MaxValue;
+            });
 
             //To add security and extend the UserManager Class
             services.AddTransient<IUserStore<ApplicationUser>, UserStore>();

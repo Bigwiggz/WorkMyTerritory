@@ -17,7 +17,10 @@ namespace WorkMyTerritory.Services.Email.BaseModels
             {
                 return $"{LastName}, {FirstName}";
             }
-
+            set
+            {
+                _FullName = value;
+            }
         }
         public string Email { get; set; }
     }

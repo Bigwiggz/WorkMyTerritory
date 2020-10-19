@@ -18,7 +18,13 @@ namespace WorkMyTerritory.Extensions.Email.EmailServices
         {
            _emailService = emailService;
         }
-        public void SendEmailConfirmation(ApplicationUser user, string link)
+
+        /// <summary>
+        /// Login Logic to send confirmation email for password reset or initial login
+        /// </summary>
+        /// <param name="user">user Object with user data</param>
+        /// <param name="link">Link for password reset</param>
+        public async Task SendEmailConfirmationAsync(ApplicationUser user, string link)
         {
             //Bring in email Model from Base Email Model
             EmailAddress sendToEmailAddress = new EmailAddress()
@@ -46,7 +52,17 @@ namespace WorkMyTerritory.Extensions.Email.EmailServices
             };
 
             //Send email
-            _emailService.Send(sendtoEmailMessage);
+            await _emailService.SendAsync(sendtoEmailMessage);
+        }
+
+        /// <summary>
+        /// Send Territory Assignment email with link to publisher
+        /// </summary>
+        /// <param name="territoryAssignment">Territory Assignment Object with all territory assignment information</param>
+        /// <param name="link">Url Link to access territory assignment</param>
+        public Task SendTerritoryAssignmentEmailAsync(TerritoryWorkAssignment territoryAssignment, string link)
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -9,6 +9,10 @@ namespace WorkMyTerritory.Extensions.Email.EmailInterfaces
 {
     public interface IEmailSenderExtensions
     {
-        public void SendEmailConfirmation(ApplicationUser user, string link);
+        public Task SendEmailConfirmationAsync(ApplicationUser user, string link);
+
+        public Task SendTerritoryAssignmentEmailAsync(TerritoryWorkAssignment territoryAssignment, string link);
+
+
     }
 }

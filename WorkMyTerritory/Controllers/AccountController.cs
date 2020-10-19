@@ -71,7 +71,7 @@ namespace WorkMyTerritory.Controllers
                     //Create email confirmation token
                     var token = await userManager.GenerateEmailConfirmationTokenAsync(user);
                     var confirmationLink = Url.Action("ConfirmEmail", "Account", new { userId=user.Id,token=token}, Request.Scheme);
-                    emailSender.SendEmailConfirmation(user, confirmationLink);
+                     await emailSender.SendEmailConfirmationAsync(user, confirmationLink);
                     //log email sent
                     logger.Log(LogLevel.Warning, confirmationLink);
 

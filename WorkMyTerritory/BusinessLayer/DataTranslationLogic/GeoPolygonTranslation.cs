@@ -11,6 +11,11 @@ namespace WorkMyTerritory.BusinessLayer.DataTranslationLogic
 {
     public class GeoPolygonTranslation
     {
+        /// <summary>
+        /// Tranlates GoogleMaps Output to SQLGeography Format
+        /// </summary>
+        /// <param name="inputString">The string from Google Maps</param>
+        /// <returns></returns>
 		public static string GeoPolygonFormatterFromGoMapsToSQLString(string inputString)
 		{
 			//Step 1 Remove beginning first 5 characaters
@@ -64,6 +69,11 @@ namespace WorkMyTerritory.BusinessLayer.DataTranslationLogic
         private const string POINT = "Point";
         private const string POLYGON = "Polygon";
 
+        /// <summary>
+        /// Convert to GeoJSON
+        /// </summary>
+        /// <param name="geos">Enter in Type as a dictionary of type and the actual file</param>
+        /// <returns></returns>
         static public string ToGeoJSON(Dictionary<string, string> geos)
         {
             StringBuilder sb = new StringBuilder();

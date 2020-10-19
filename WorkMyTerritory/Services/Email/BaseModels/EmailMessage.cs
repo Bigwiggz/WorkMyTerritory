@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -18,6 +19,8 @@ namespace WorkMyTerritory.Services.Email.BaseModels
 		public string Subject { get; set; }
 		public string Content { get; set; }
 		public string Header { get; set; }
+
+		public IFormFileCollection Attachments { get; set; }
 
 		//Add CC BCC or other inforamtion if necessary like attachments
 
